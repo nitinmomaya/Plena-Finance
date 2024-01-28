@@ -25,7 +25,7 @@ function Recommended({ navigation }) {
         {productList.map((item) => {
           return (
             <>
-              <View style={{ width: "48%" }} key={item?.id}>
+              <View style={{ width: "48%" }}>
                 <ProductCard
                   navigation={navigation}
                   item={item}

@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const cartSlice = createSlice({
   name: "cart",
@@ -12,8 +12,6 @@ const cartSlice = createSlice({
       if (existingItem) {
         // If the product already exists, increase the quantity
         existingItem.quantity += 1;
-        // Update totalBill
-        state.totalBill = calculateTotalBill(state.items);
       } else {
         // If it's a new product, add it to the cart with quantity 1
         state.items.push({ ...action.payload, quantity: 1 });
@@ -22,7 +20,7 @@ const cartSlice = createSlice({
       }
     },
     increaseQuantity: (state, action: any) => {
-      const item = state.items.find((item) => item.id === action.payload.id);
+      const item = state.items.find((item) => item.id === action.payload);
 
       if (item) {
         // Increase the quantity, making sure it doesn't go over the available quantity
@@ -30,11 +28,18 @@ const cartSlice = createSlice({
           item.quantity + 1,
           item.availableQuantity || Infinity
         );
+        // Update totalBill
+        state.totalBill = calculateTotalBill(state.items);
       }
     },
     decreaseQuantity: (state, action: any) => {
-      const item = state.items.find((item) => item.id === action.payload.id);
-
+      const item = state.items.find((item) => item.id === action.payload);
+      if (item) {
+        // Decrease the quantity, ensuring it doesn't go below 1
+        item.quantity = item.quantity - 1;
+        // Update totalBill
+        state.totalBill = calculateTotalBill(state.items);
+      }
       // If quantity becomes 0, remove the item from the cart
       if (item.quantity === 0) {
         state.items.splice(item, 1);

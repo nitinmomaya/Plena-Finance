@@ -1,7 +1,9 @@
 import { View, Text, Image } from "react-native";
+import React from "react";
 import { useSelector } from "react-redux";
-import cart from "../assets/icon.png";
+import cart from "../../assets/cart.svg";
 import { SvgUri } from "react-native-svg";
+
 const CustomHeaderTitle = () => {
   const cartItems = useSelector((state: any) => state.cart.items);
   return (
