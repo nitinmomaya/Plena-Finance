@@ -1,22 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import HomeScreen from './src/Page/HomeScreen/HomeScreen';
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text, View } from "react-native";
 
+import HomeScreenPage from "./src/Page/HomeScreen";
+import { getAllProducts } from "./src/Services/Product/product.service";
 
 export default function App() {
   return (
     <View style={styles.container}>
-     
-      <HomeScreen/>
+      <HomeScreenPage />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "start",
+    justifyContent: "center",
   },
 });
