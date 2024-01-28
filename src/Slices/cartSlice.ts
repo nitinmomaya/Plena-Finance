@@ -42,7 +42,12 @@ const cartSlice = createSlice({
       }
       // If quantity becomes 0, remove the item from the cart
       if (item.quantity === 0) {
-        state.items.splice(item, 1);
+        const index = state.items.findIndex(
+          (cartItem) => cartItem.id === action.payload
+        );
+        if (index !== -1) {
+          state.items.splice(index, 1);
+        }
       }
       // Update totalBill
       state.totalBill = calculateTotalBill(state.items);

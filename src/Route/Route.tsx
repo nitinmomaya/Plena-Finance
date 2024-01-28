@@ -28,7 +28,7 @@ const Route = () => {
         component={Cart}
         options={({ route }) => ({
           title: cartItems
-            ? `Shopping Cart (${cartItems.length} items)`
+            ? `Shopping Cart (${cartItems.length})`
             : "Shopping Cart",
         })}
       />
