@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { SafeAreaView, ScrollView, Text, View } from "react-native";
+import { SafeAreaView, Text, View } from "react-native";
 import { getAllProducts } from "../../Services/Product/product.service";
 import { styles } from "./HomeScreen.style";
 import ProductCard from "../../Component/ProductCard/ProductCard";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
-function Recommended() {
+function Recommended({ navigation }) {
   const [productList, setProductList] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -24,8 +25,11 @@ function Recommended() {
         {productList.map((item) => {
           return (
             <>
-              <View style={{ width: "48%" }}>
+              <View style={{ width: "48%" }} key={item?.id}>
                 <ProductCard
+                  navigation={navigation}
+                  item={item}
+                  id={item?.id}
                   price={item?.price}
                   name={item?.title}
                   image={item?.thumbnail}

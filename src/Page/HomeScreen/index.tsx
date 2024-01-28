@@ -3,11 +3,11 @@ import { SafeAreaView, ScrollView } from "react-native";
 import Header from "./Header";
 import Recommended from "./Recommended";
 
-function HomeScreenPage() {
+function HomeScreenPage({ navigation }) {
   return (
     <ScrollView>
       <Header />
-      <Recommended />
+      <Recommended navigation={navigation} />
     </ScrollView>
   );
 }

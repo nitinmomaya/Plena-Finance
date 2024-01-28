@@ -1,14 +1,17 @@
-import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 
-import HomeScreenPage from "./src/Page/HomeScreen";
-import { getAllProducts } from "./src/Services/Product/product.service";
+import { NavigationContainer } from "@react-navigation/native";
+import Route from "./src/Route/Route";
+import { Provider } from "react-redux";
+import store from "./src/Store/store";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <HomeScreenPage />
-    </View>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Route />
+      </NavigationContainer>
+    </Provider>
   );
 }
 

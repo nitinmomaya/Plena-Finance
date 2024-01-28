@@ -5,5 +5,7 @@ export const getAllProducts = async () => {
     const response = await axios.get(GET_ALL_PRODUCTS);
     console.log("response", response.data);
     return response.data;
-  } catch (error) {}
+  } catch (error) {
+    console.log("error", error);
+  }
 };
