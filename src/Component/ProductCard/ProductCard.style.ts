@@ -8,6 +8,9 @@ export const styles = StyleSheet.create({
 
     borderRadius: 4,
   },
+  addButton: {
+    borderRadius: 50,
+  },
   cardContainer: {
     width: "100%",
     // 48% to allow for some spacing between items

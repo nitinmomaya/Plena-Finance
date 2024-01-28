@@ -4,7 +4,6 @@ import HomeScreenPage from "../Page/HomeScreen";
 import ProductDetail from "../Page/ProductDetail/ProductDetail";
 import Cart from "../Page/Cart/Cart";
 import { useSelector } from "react-redux";
-import CustomHeaderTitle from "./CustomHeaderTitle";
 
 const Stack = createStackNavigator();
 export type CartScreenParams = {
@@ -16,13 +15,7 @@ const Route = () => {
   return (
     <Stack.Navigator initialRouteName="Home">
       <Stack.Screen name="Home" component={HomeScreenPage} />
-      <Stack.Screen
-        name="Details"
-        component={ProductDetail}
-        options={{
-          headerTitle: () => <CustomHeaderTitle />,
-        }}
-      />
+      <Stack.Screen name="Details" component={ProductDetail} options={{}} />
       <Stack.Screen
         name="Cart"
         component={Cart}

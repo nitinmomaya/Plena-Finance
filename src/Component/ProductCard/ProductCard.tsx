@@ -1,22 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import {
-  Button,
   Image,
   Text,
+  TouchableOpacity,
   TouchableWithoutFeedback,
   View,
 } from "react-native";
+import { Button } from "react-native-elements";
 import { styles } from "./ProductCard.style";
-import { addItem, increaseQuantity } from "../../Slices/cartSlice";
+import { addItem } from "../../Slices/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
-
+import WishList from "../WishList/WishList";
+import Icon from "react-native-vector-icons/FontAwesome";
 function ProductCard({ id, price, item, name, image, navigation }) {
   console.log("id", id);
   const dispatch = useDispatch();
-  const cartItems = useSelector((state: any) => state.cart.items);
-  const navigateToCart = (totalItems) => {
-    navigation.navigate("Cart", { totalItems });
-  };
+
   return (
     <TouchableWithoutFeedback
       onPress={() => navigation.navigate("Details", { id })}
@@ -27,20 +26,28 @@ function ProductCard({ id, price, item, name, image, navigation }) {
           alt="product-image"
           style={styles.proImage}
         />
-
-        <View>
-          <View>
+        <WishList id={id} />
+        <View
+          style={{
+            flex: 1,
+            alignItems: "center",
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}
+        >
+          <View style={{ flex: 0.7, marginVertical: 8 }}>
             <Text>${price}</Text>
             <Text>{name}</Text>
           </View>
           <View>
             <Button
+              style={styles.addButton}
+              icon={<Icon name={"plus"} size={24} color={"white"} />}
               onPress={() => {
                 dispatch(addItem(item));
                 navigation.navigate("Cart", { id });
               }}
-              title={"ADD"}
-            ></Button>
+            />
           </View>
         </View>
       </View>

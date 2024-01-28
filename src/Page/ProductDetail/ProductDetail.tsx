@@ -7,6 +7,7 @@ import { styles } from "./ProductDetail.style";
 import StarRating from "../../Component/StarRating/StarRating";
 import { addItem } from "../../Slices/cartSlice";
 import { useDispatch } from "react-redux";
+import WishList from "../../Component/WishList/WishList";
 
 function ProductDetail({ route, navigation }) {
   const { id } = route.params;
@@ -48,6 +49,7 @@ function ProductDetail({ route, navigation }) {
                     style={styles.image}
                     resizeMode="contain"
                   />
+                  <WishList id={id} />
                 </View>
               ))}
             </Swiper>

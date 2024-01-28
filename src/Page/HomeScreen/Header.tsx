@@ -5,14 +5,14 @@ import { styles } from "./HomeScreen.style";
 function Header() {
   const [search, setSearch] = useState("");
 
-  const handleChange = (e) => {
-    setSearch(e.target.value);
+  const handleChange = (text) => {
+    setSearch(text);
   };
 
   return (
     <SafeAreaView>
       <View style={styles.headerContainer}>
-        <Text>Hey, Nitin</Text>
+        <Text style={{ fontSize: 22, color: "#fff" }}>Hey, Nitin</Text>
         <TextInput
           style={styles.input}
           placeholder="Search Products or store"
@@ -25,12 +25,14 @@ function Header() {
 
         <View style={styles.deliveryInfo}>
           <View style={styles.content}>
-            <Text> DELIVERY TO</Text>
-            <Text> Green Way 300, Sylhet</Text>
+            <Text style={{ fontSize: 10, color: "#F8F9FB" }}> DELIVERY TO</Text>
+            <Text style={{ fontSize: 14, color: "#fff" }}>
+              Green Way 300, Sylhet v
+            </Text>
           </View>
-          <View style={styles.content}>
-            <Text> WITHIN</Text>
-            <Text> Green Way 300, Sylhet</Text>
+          <View style={styles.rightContent}>
+            <Text style={{ fontSize: 10, color: "#F8F9FB" }}> WITHIN</Text>
+            <Text style={{ fontSize: 14, color: "#fff" }}> 1 Hour v</Text>
           </View>
         </View>
       </View>

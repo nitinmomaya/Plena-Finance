@@ -31,6 +31,12 @@ export const styles = StyleSheet.create({
     flexDirection: "column",
     height: 40,
   },
+  rightContent: {
+    flex: 1, // Distribute available space equally among items
+    flexDirection: "column",
+    height: 40,
+    alignItems: "flex-end",
+  },
   scrollContainer: {
     flex: 1,
     flexDirection: "row",

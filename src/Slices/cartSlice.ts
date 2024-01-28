@@ -2,8 +2,23 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const cartSlice = createSlice({
   name: "cart",
-  initialState: { items: [], totalBill: 0 },
+  initialState: { wishListItem: [], items: [], totalBill: 0 },
   reducers: {
+    wishListAddItem: (state: any, action: any) => {
+      const existingItem = state.wishListItem.find(
+        (item) => item.id === action.payload
+      );
+
+      if (existingItem) {
+        // If the product already exists, increase the quantity
+        state.wishListItem = state.wishListItem.filter(
+          (item) => item.id !== action.payload
+        );
+      } else {
+        // If it's a new product, add it to the cart with quantity 1
+        state.wishListItem.push({ ...action.payload, quantity: 1 });
+      }
+    },
     addItem: (state: any, action: any) => {
       const existingItem = state.items.find(
         (item) => item.id === action.payload.id
@@ -62,6 +77,6 @@ const cartSlice = createSlice({
 const calculateTotalBill = (items: any) => {
   return items.reduce((total, item) => total + item.quantity * item.price, 0);
 };
-export const { addItem, increaseQuantity, decreaseQuantity } =
+export const { wishListAddItem, addItem, increaseQuantity, decreaseQuantity } =
   cartSlice.actions;
 export default cartSlice.reducer;
