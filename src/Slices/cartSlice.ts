@@ -46,7 +46,12 @@ const cartSlice = createSlice({
           (cartItem) => cartItem.id === action.payload
         );
         if (index !== -1) {
-          state.items.splice(index, 1);
+          const index = state.items.findIndex(
+            (cartItem) => cartItem.id === action.payload
+          );
+          if (index !== -1) {
+            state.items.splice(index, 1);
+          }
         }
       }
       // Update totalBill
