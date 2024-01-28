@@ -55,7 +55,7 @@ function ProductDetail({ route, navigation }) {
         )}
         {/* Display details for the item */}
 
-        <Text style={styles.price}>${product.price}</Text>
+        <Text style={styles.price}>${product?.price?.toFixed(2)}</Text>
 
         <View style={styles.buttoncontainer}>
           <Button
